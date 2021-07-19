@@ -53,9 +53,7 @@ imwrite(einsteinEqualizado, "result.jpg");
 # mostro a imagem equalizada
 figure(1);
 imshow(einsteinEqualizado);
-#title("Einstein Equalizado");
 
 # mostro o histograma da imagem normalizada
 figure(2);
 plot(niveisIntensidade, s);
-#title("Histograma - Einstein Equalizado");
