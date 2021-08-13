@@ -39,6 +39,6 @@ imagemFinal = imagemFiltro(1:M, 1:N);
 
 imwrite(imagemFinal, 'resultado.png');
 
-figure(3);
+figure(2);
 imshow(im2uint8(imagemFinal));
 title('Multiplicação do filtro com a transformação de fourier.');
