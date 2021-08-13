@@ -23,12 +23,22 @@ title('Imagem da transformação rápida de Fourier.');
 # salvo o espectro em um novo arquivo
 imwrite(espectro, 'espectro.png');
 
-# filtro de passa baixa
-matriz = ones(P, Q);
+# filtro notch criado no gimp
+filtro = imread('filtro.png');
+filtro = im2double(filtro);
 
-# passo por toda matriz 
+# multiplicação do filtro com a transformacao rapida de Fourier
+imagemFiltro = imagemRapidaFourier .* filtro;
+imagemFiltro = fftshift(imagemFiltro);
+imagemFiltro = ifft2(imagemFiltro);
+imagemFiltro = real(imagemFiltro);
 
+# mostra apenas a parte superior esquerda
+imagemFinal = zeros(M, N);
+imagemFinal = imagemFiltro(1:M, 1:N);
 
-figure(2);
-imshow(matriz);
-title('Filtro notch.');
+imwrite(imagemFinal, 'resultado.png');
+
+figure(3);
+imshow(im2uint8(imagemFinal));
+title('Multiplicação do filtro com a transformação de fourier.');
